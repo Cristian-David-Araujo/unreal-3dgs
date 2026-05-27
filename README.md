@@ -1,11 +1,14 @@
 # UnrealSplat - 3D Gaussian Splatting for Unreal Engine
 
 ![Unreal Engine Version](https://img.shields.io/badge/Unreal%20Engine-5.5-purple.svg)
-![Platform](https://img.shields.io/badge/Platform-Windows%2064--bit-blue.svg)
+![Platform Windows](https://img.shields.io/badge/Platform-Windows%2064--bit-blue.svg)
+![Platform Quest](https://img.shields.io/badge/Platform-Meta%20Quest%203%20%2F%20Pro-blueviolet.svg)
 ![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)
 ![PRs Welcome](https://img.shields.io/badge/PRs-welcome-orange.svg)
 
 UnrealSplat is a plugin for Unreal Engine 5.5 that enables high-performance, real-time rendering of 3D Gaussian Splatting models. It leverages Unreal's built-in Niagara system to render scenes with up to 2 million splats efficiently.
+
+**Platforms supported:** Windows 64-bit (development & editor) · Meta Quest 3 and Quest Pro (standalone APK via Android arm64 + Vulkan)
 
 <img width="1101" height="977" alt="image" src="https://github.com/user-attachments/assets/3c1dbbb9-1692-40de-8886-48eea588dbd3" />
 Example Screenshot from within the Unreal Engine's Editor using this Plugin. The 3DGS Model is from https://jonbarron.info/mipnerf360/.
@@ -18,6 +21,7 @@ The Plugin is still in relatively early development.
 * **Niagara-Powered Rendering**: Utilizes Unreal Engine's Niagara system for rendering, ensuring high performance and integration with the engine's VFX pipeline.
 * **Large Model Support**: Efficiently renders models with up to 2 million splats.
 * **Texture-Based Splat Storage**: Splat properties are stored in textures and loaded on-demand by Niagara for optimal memory and performance.
+* **Meta Quest 3 / Pro Standalone**: The plugin now ships a dedicated `UnrealSplatRuntime` module (Android arm64, Vulkan) so scenes can be packaged as standalone APKs and run wirelessly on Meta Quest 3 and Quest Pro.
 * **High Performance**: Designed for real-time applications, including VR and interactive walkthroughs.
 * **Simple UI**: A straightforward user interface for quick and easy model loading.
 
@@ -36,8 +40,18 @@ This plugin is currently in active development. Please be aware of the following
 
 ## 🔧 Installation
 
-1.  **Clone the plugin into the Plugins Folder of your Unreal Project**. Itincludes pre-compiled binaries for **Windows 64-bit**.
+1.  **Clone the plugin into the Plugins Folder of your Unreal Project**. It includes pre-compiled binaries for **Windows 64-bit**.
 2.  **Restart your project.** The plugin should be enabled automatically (You might need to rebuild the plugin from your Projects Visual Studio Environment). You can verify this under **Edit > Plugins**.
+
+### Meta Quest 3 / Pro — Additional Setup
+
+To build a standalone APK for Quest 3 or Quest Pro, follow the detailed guide in [Docs/QUEST_SETUP.md](Docs/QUEST_SETUP.md).
+
+**Quick summary:**
+1. Install Android Studio (Hedgehog+), Android SDK API 34, NDK r25b.
+2. Set SDK/NDK/JDK paths in **Edit → Project Settings → Platforms → Android SDK**.
+3. Ensure the `OculusXR` and `OpenXR` plugins are enabled (already done in `UnrealSplatPlugin.uproject`).
+4. Import your `.ply` model in the Editor on Windows, then package via **Platforms → Android → Package Project**.
 
 ---
 
