@@ -1,9 +1,9 @@
 {
 	"FileVersion": 3,
-	"Version": 1,
-	"VersionName": "1.0",
+	"Version": 2,
+	"VersionName": "1.1",
 	"FriendlyName": "UnrealSplat",
-	"Description": "Renderer for 3D Gaussian Splatting in Unreal Engine",
+	"Description": "Renderer for 3D Gaussian Splatting in Unreal Engine. Supports Windows 64-bit and Meta Quest 3 / Pro (Android arm64, Vulkan).",
 	"Category": "Other",
 	"CreatedBy": "Jonas Itt",
 	"CreatedByURL": "www.github.com/ji20",
@@ -16,9 +16,16 @@
 	"Installed": false,
 	"Modules": [
 		{
+			"Name": "UnrealSplatRuntime",
+			"Type": "Runtime",
+			"LoadingPhase": "Default",
+			"PlatformAllowList": ["Win64", "Android"]
+		},
+		{
 			"Name": "UnrealSplat",
 			"Type": "Editor",
-			"LoadingPhase": "Default"
+			"LoadingPhase": "Default",
+			"PlatformAllowList": ["Win64"]
 		}
 	]
 }
